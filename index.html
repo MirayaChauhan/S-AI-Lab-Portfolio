@@ -4,20 +4,1253 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Miraya Chauhan — First-Year CS & AI Student at Rishihood × Newton School of Technology. 2-time state speed skating champion, Olympiad medalist, builder & debater." />
-  <title>Miraya Chauhan — CS & AI · Builder & Speaker</title>
+  <title>Miraya Chauhan — CS &amp; AI · Builder &amp; Speaker</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;1,9..144,400&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+/* Miraya Chauhan - Portfolio Design System */
+:root {
+  /* Dynamic Light Palette */
+  --bg-base: #f9f7f2;
+  --bg-surface: #ffffff;
+  --bg-surface-alt: #fdfbf7;
+  --border-dark: #121520;
+  --border-subtle: rgba(18, 22, 34, 0.12);
+
+  --text: #121520;
+  --text-muted: #4e5568;
+  --text-dim: #7f879a;
+
+  /* Graphic Colors */
+  --coral: #ff473a;
+  --coral-light: #ffebe9;
+  --blue: #2563eb;
+  --blue-light: #edf4ff;
+  --lime: #d8f831;
+  --lime-dark: #748c00;
+  --yellow: #ffc425;
+  --yellow-light: #fff8e1;
+  --purple: #8b5cf6;
+  --purple-light: #f4effe;
+  --mint: #10b981;
+  --mint-light: #eafaf3;
+
+  /* Typography */
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  --shadow-pop: 4px 4px 0px #121520;
+  --shadow-pop-sm: 2px 2px 0px #121520;
+  --shadow-pop-lg: 6px 6px 0px #121520;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; color-scheme: light; }
+
+/* Light, Non-Solid Ambient Mesh Background */
+body {
+  background-color: var(--bg-base);
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(255, 71, 58, 0.08) 0px, transparent 48%),
+    radial-gradient(at 100% 12%, rgba(37, 99, 235, 0.07) 0px, transparent 45%),
+    radial-gradient(at 15% 45%, rgba(216, 248, 49, 0.12) 0px, transparent 42%),
+    radial-gradient(at 90% 70%, rgba(139, 92, 246, 0.08) 0px, transparent 50%),
+    radial-gradient(at 20% 95%, rgba(255, 196, 37, 0.10) 0px, transparent 45%),
+    radial-gradient(rgba(18, 22, 34, 0.06) 1.5px, transparent 1.5px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Floating Ambient Orbs */
+.ambient-orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  animation: floatOrb 26s ease-in-out infinite alternate;
+}
+.ambient-orb-1 {
+  top: 15vh;
+  right: -8vw;
+  width: 440px;
+  height: 440px;
+  background: radial-gradient(circle, rgba(216, 248, 49, 0.35) 0%, rgba(37, 99, 235, 0.18) 60%, transparent 80%);
+}
+.ambient-orb-2 {
+  bottom: 15vh;
+  left: -10vw;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 71, 58, 0.28) 0%, rgba(139, 92, 246, 0.22) 60%, transparent 80%);
+  animation-duration: 32s;
+}
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-35px, 30px) scale(1.08); }
+  100% { transform: translate(25px, -25px) scale(0.95); }
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+.shell {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 28px;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+/* Fixed Header */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  background: rgba(249, 247, 242, 0.92);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 2px solid var(--border-dark);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.brand-avatar {
+  width: 40px;
+  height: 40px;
+  background: var(--coral);
+  color: #ffffff;
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: var(--shadow-pop-sm);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.brand:hover .brand-avatar {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #121520;
+}
+
+.brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+.brand-name { font-weight: 800; font-size: 1.02rem; letter-spacing: -0.01em; color: var(--text); }
+.brand-sub { font-size: 0.76rem; color: var(--text-muted); font-weight: 600; }
+
+.nav-tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #ffffff;
+  padding: 5px;
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-pop-sm);
+}
+
+.nav-pill-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.nav-pill-btn .pill-num {
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  opacity: 0.65;
+}
+.nav-pill-btn:hover {
+  color: var(--text);
+  background: rgba(18, 22, 34, 0.05);
+}
+.nav-pill-btn.active {
+  background: var(--border-dark);
+  color: #ffffff;
+}
+.nav-pill-btn.active .pill-num {
+  color: var(--lime);
+  opacity: 1;
+}
+
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: var(--lime);
+  color: var(--border-dark);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-full);
+  font-size: 0.84rem;
+  font-weight: 800;
+  box-shadow: var(--shadow-pop-sm);
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+.header-cta:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px #121520;
+  background: #e4ff47;
+}
+
+.mobile-toggle {
+  display: none;
+  font-size: 1.3rem;
+  padding: 6px 10px;
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+}
+
+/* Scroll progress strip */
+.scroll-progress-track {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: rgba(18, 22, 34, 0.08);
+}
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--coral), var(--yellow), var(--lime-dark), var(--blue));
+  transition: width 0.05s ease-out;
+}
+
+/* Main Content Container */
+main {
+  flex: 1 0 auto;
+  padding-top: 106px;
+  padding-bottom: 70px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Page Intro Header Banner */
+.page-intro {
+  margin-bottom: 40px;
+}
+.page-eyebrow {
+  font-size: 0.76rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  border: 1.5px solid var(--border-dark);
+}
+.page-eyebrow.coral { background: var(--coral-light); color: var(--coral); }
+.page-eyebrow.blue { background: var(--blue-light); color: var(--blue); }
+.page-eyebrow.lime { background: var(--lime); color: var(--border-dark); }
+.page-eyebrow.purple { background: var(--purple-light); color: var(--purple); }
+.page-eyebrow.yellow { background: var(--yellow-light); color: #9c6800; }
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.page-title em {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+}
+.page-lead {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 680px;
+}
+.page-lead strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* Section Head */
+.section-head {
+  margin-bottom: 30px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  border-bottom: 2px solid rgba(18, 22, 34, 0.08);
+  padding-bottom: 14px;
+}
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+.section-title em {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+}
+.section-desc {
+  font-size: 0.94rem;
+  color: var(--text-muted);
+  max-width: 440px;
+  line-height: 1.5;
+}
+
+/* Sticker Pill */
+.sticker-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 2px solid var(--border-dark);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 0.82rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-pop-sm);
+  width: fit-content;
+}
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--coral);
+  border-radius: 50%;
+  animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.5; }
+}
+
+/* Action Buttons */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  margin-top: 4px;
+}
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 800;
+  border: 2px solid var(--border-dark);
+  box-shadow: var(--shadow-pop-sm);
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+}
+.action-btn.coral {
+  background: var(--coral);
+  color: #ffffff;
+}
+.action-btn.coral:hover {
+  background: #f03527;
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-pop);
+}
+.action-btn.outline {
+  background: #ffffff;
+  color: var(--text);
+}
+.action-btn.outline:hover {
+  background: #fdfcf9;
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-pop);
+}
+
+/* Hero Split */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 4.2vw, 3.8rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+.hero-title .tag-coral { color: var(--coral); }
+.hero-title .tag-blue { color: var(--blue); }
+.hero-title .serif-accent {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Illustration Pod (Canvas) */
+.illustration-pod {
+  background: #ffffff;
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  box-shadow: var(--shadow-pop-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+}
+.pod-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid rgba(18, 22, 34, 0.08);
+  padding-bottom: 10px;
+}
+.pod-title {
+  font-weight: 800;
+  font-size: 0.88rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text);
+}
+.pod-pill {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  background: var(--lime);
+  color: var(--border-dark);
+  border: 1px solid var(--border-dark);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+#hero-canvas {
+  width: 100%;
+  height: 290px;
+  background: #fbfaf6;
+  border: 2px solid rgba(18, 22, 34, 0.1);
+  border-radius: var(--radius-md);
+  display: block;
+  cursor: crosshair;
+}
+.pod-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pod-modes {
+  display: flex;
+  gap: 6px;
+}
+.mode-btn {
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 6px 12px;
+  border: 1.5px solid var(--border-dark);
+  border-radius: var(--radius-full);
+  background: #ffffff;
+  color: var(--text);
+  transition: all 0.15s ease;
+}
+.mode-btn:hover { background: rgba(18, 22, 34, 0.05); }
+.mode-btn.active {
+  background: var(--border-dark);
+  color: #ffffff;
+  box-shadow: 2px 2px 0px rgba(18, 22, 34, 0.3);
+}
+.pod-tip {
+  font-size: 0.76rem;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+/* Marquee Ticker */
+.ticker-wrap {
+  margin: 36px 0;
+  overflow: hidden;
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  box-shadow: var(--shadow-pop);
+}
+.ticker-bar {
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 9px 0;
+}
+.ticker-bar.bar-primary {
+  background: var(--yellow);
+  border-bottom: 1.5px solid var(--border-dark);
+  font-weight: 800;
+  font-size: 0.88rem;
+}
+.ticker-bar.bar-secondary {
+  background: #ffffff;
+  font-weight: 700;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+.ticker-scroll {
+  display: inline-flex;
+  animation: tickerRun 28s linear infinite;
+}
+.ticker-scroll.reverse {
+  animation: tickerRunRev 24s linear infinite;
+}
+@keyframes tickerRun {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+@keyframes tickerRunRev {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.ticker-item {
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Matrix Cards */
+.matrix-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.matrix-card {
+  background: var(--bg-surface);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  box-shadow: var(--shadow-pop-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+.matrix-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-pop);
+  background: var(--bg-surface-alt);
+}
+.card-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--border-dark);
+}
+.card-coral .card-banner { background: var(--coral-light); color: var(--coral); }
+.card-blue .card-banner { background: var(--blue-light); color: var(--blue); }
+.card-lime .card-banner { background: var(--lime); color: var(--border-dark); }
+.card-purple .card-banner { background: var(--purple-light); color: var(--purple); }
+.card-yellow .card-banner { background: var(--yellow-light); color: #9c6800; }
+
+.matrix-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.22rem;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--text);
+}
+.matrix-card p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+.tag-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+.tag-chip {
+  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: #f1eee6;
+  border: 1px solid rgba(18, 22, 34, 0.15);
+  color: var(--text);
+}
+.tag-chip.accent {
+  background: var(--border-dark);
+  color: #ffffff;
+  border-color: var(--border-dark);
+}
+
+/* Track Cards (Journey) */
+.journey-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+}
+.track-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.track-card {
+  background: #ffffff;
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  align-items: center;
+  gap: 18px;
+  box-shadow: var(--shadow-pop-sm);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.track-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px #121520;
+}
+.track-num {
+  font-family: var(--font-mono);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--coral);
+}
+.track-content h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text);
+}
+.track-content p {
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-top: 2px;
+}
+.track-tag {
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border-dark);
+  background: var(--lime);
+  color: var(--border-dark);
+  white-space: nowrap;
+}
+
+/* Quote Poster */
+.quote-poster {
+  background: var(--yellow-light);
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 26px;
+  box-shadow: var(--shadow-pop-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  justify-content: center;
+}
+.quote-statement {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.35;
+  color: var(--text);
+}
+.quote-statement em {
+  font-weight: 700;
+  color: var(--coral);
+  font-style: normal;
+}
+.quote-author {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+/* Zine Grid */
+.zine-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.zine-card {
+  background: #ffffff;
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  box-shadow: var(--shadow-pop-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.zine-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-pop);
+  background: #fdfcf9;
+}
+.zine-emoji {
+  font-size: 2rem;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.zine-card:hover .zine-emoji {
+  transform: scale(1.15) rotate(4deg);
+}
+.zine-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+}
+.zine-desc {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* Contact Grid */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 24px;
+}
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form-group label {
+  font-size: 0.76rem;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 11px 15px;
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  font-family: inherit;
+  font-size: 0.92rem;
+  background: #ffffff;
+  color: var(--text);
+  outline: none;
+  transition: box-shadow 0.15s ease;
+}
+.form-input:focus, .form-textarea:focus {
+  box-shadow: 3px 3px 0px var(--border-dark);
+  background: #fffdfa;
+}
+
+/* ─── Page Link Cards (Home Page Hub) ─── */
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 36px;
+}
+.hub-card {
+  background: #ffffff;
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: 26px;
+  box-shadow: var(--shadow-pop);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+}
+.hub-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 6px 6px 0px #121520;
+}
+.hub-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.hub-card-icon-pod {
+  width: 60px;
+  height: 60px;
+  background: #faf8f2;
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 2px 2px 0px #121520;
+}
+.hub-card-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.hub-card-content p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.hub-card-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.86rem;
+  font-weight: 800;
+  color: var(--border-dark);
+  margin-top: 8px;
+  transition: gap 0.2s ease;
+}
+.hub-card:hover .hub-card-action {
+  gap: 10px;
+  color: var(--coral);
+}
+
+/* ─── Connective Next-Page Bridge (At bottom of each page) ─── */
+.next-page-bridge {
+  margin: 60px 0 20px;
+  background: #ffffff;
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  box-shadow: var(--shadow-pop);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease;
+}
+.next-page-bridge:hover {
+  transform: translateY(-4px);
+  box-shadow: 6px 6px 0px #121520;
+}
+.bridge-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.bridge-pod {
+  width: 68px;
+  height: 68px;
+  background: #fdfbf7;
+  border: 2px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  box-shadow: 3px 3px 0px #121520;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.bridge-illust-svg {
+  width: 52px;
+  height: 52px;
+  overflow: visible;
+}
+.bridge-meta .bridge-kicker {
+  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--coral);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.bridge-meta h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+}
+.bridge-meta p {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.bridge-right .action-btn {
+  white-space: nowrap;
+}
+
+/* ─── Animated SVG Keyframes ─── */
+@keyframes spinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.anim-spin {
+  transform-origin: 36px 36px;
+  animation: spinSlow 14s linear infinite;
+}
+
+@keyframes pulsePrism {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+.anim-pulse {
+  transform-origin: 36px 36px;
+  animation: pulsePrism 2.8s ease-in-out infinite;
+}
+
+@keyframes needleSweep {
+  0% { transform: rotate(-25deg); }
+  50% { transform: rotate(35deg); }
+  100% { transform: rotate(-25deg); }
+}
+.anim-needle {
+  animation: needleSweep 3s ease-in-out infinite;
+}
+
+@keyframes twinkleStar {
+  0%, 100% { transform: scale(0.85); opacity: 0.7; }
+  50% { transform: scale(1.25); opacity: 1; }
+}
+.anim-sparkle {
+  animation: twinkleStar 2s ease-in-out infinite;
+}
+
+@keyframes pulseDotAnim {
+  0%, 100% { transform: scale(0.85); opacity: 0.6; }
+  50% { transform: scale(1.3); opacity: 1; }
+}
+.anim-pulse-dot {
+  animation: pulseDotAnim 1.8s ease-in-out infinite;
+}
+
+@keyframes gearSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.anim-gear {
+  animation: gearSpin 9s linear infinite;
+}
+
+@keyframes cursorClick {
+  0%, 100% { transform: translate(0, 0); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(2px, 2px) scale(0.92); }
+}
+.anim-cursor {
+  animation: cursorClick 3.2s ease-in-out infinite;
+}
+
+@keyframes waveShift {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+.anim-wave {
+  animation: waveShift 3s ease-in-out infinite;
+}
+
+@keyframes floatNote {
+  0% { transform: translate(24px, 18px) rotate(-6deg); }
+  100% { transform: translate(24px, 13px) rotate(6deg); }
+}
+.anim-float-note {
+  animation: floatNote 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes planeGlide {
+  0% { transform: translate(20px, 23px) rotate(-2deg); }
+  50% { transform: translate(24px, 18px) rotate(3deg); }
+  100% { transform: translate(20px, 23px) rotate(-2deg); }
+}
+.anim-plane {
+  animation: planeGlide 3.6s ease-in-out infinite;
+}
+
+@keyframes signalPulseArcs {
+  0% { opacity: 0.25; transform: scale(0.96); }
+  50% { opacity: 0.85; transform: scale(1.04); }
+  100% { opacity: 0.25; transform: scale(0.96); }
+}
+.anim-signal-1 {
+  transform-origin: 36px 36px;
+  animation: signalPulseArcs 2.5s ease-in-out infinite;
+}
+.anim-signal-2 {
+  transform-origin: 36px 36px;
+  animation: signalPulseArcs 2.5s ease-in-out infinite 0.6s;
+}
+
+/* Scroll Reveal */
+.reveal-node {
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  filter: blur(2px);
+  transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.5s ease;
+  will-change: opacity, transform, filter;
+}
+.reveal-node.revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Site Footer */
+.site-footer {
+  margin-top: 60px;
+  border-top: 2px solid var(--border-dark);
+  background: rgba(255, 255, 255, 0.95);
+  padding: 32px 0;
+}
+.footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+.footer-nav {
+  display: flex;
+  gap: 16px;
+  font-weight: 700;
+  font-size: 0.84rem;
+}
+.footer-nav a:hover {
+  color: var(--coral);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 960px) {
+  .hero-split, .journey-layout, .contact-layout, .hub-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .matrix-grid { grid-template-columns: 1fr; }
+  .zine-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-tabs { display: none; }
+  .mobile-toggle { display: block; }
+  .next-page-bridge {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+@media (max-width: 640px) {
+  .zine-grid { grid-template-columns: 1fr; }
+  .track-card { grid-template-columns: 40px 1fr; gap: 12px; }
+  .track-tag { grid-column: 2; justify-self: start; }
+  .footer-row { flex-direction: column; text-align: center; }
+  .shell { padding: 0 18px; }
+}
+
+
+    /* ─── Inlined Vertical Waypoint Tracker ─── */
+    .waypoint-tracker {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      z-index: 900;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(10px);
+      border: 2px solid var(--border-dark);
+      border-radius: var(--radius-full);
+      padding: 14px 8px;
+      box-shadow: var(--shadow-pop-sm);
+    }
+    .waypoint-node {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 2px solid var(--border-dark);
+      background: #ffffff;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .waypoint-node:hover,
+    .waypoint-node.active {
+      transform: scale(1.35);
+      background: var(--coral);
+      border-color: var(--border-dark);
+      box-shadow: 0 0 0 3px rgba(255, 71, 58, 0.25);
+    }
+    .waypoint-tooltip {
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--border-dark);
+      color: #ffffff;
+      font-size: 0.74rem;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+    }
+    .waypoint-node:hover .waypoint-tooltip {
+      opacity: 1;
+      visibility: visible;
+      right: 20px;
+    }
+
+    /* ─── Connective Bridges between Sections ─── */
+    .connective-bridge {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 48px auto;
+      position: relative;
+      text-align: center;
+    }
+    .bridge-line {
+      width: 2px;
+      height: 48px;
+      background: linear-gradient(180deg, var(--border-dark) 0%, rgba(18, 22, 34, 0.2) 100%);
+      position: relative;
+    }
+    .bridge-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -2px;
+      width: 6px;
+      height: 14px;
+      background: var(--coral);
+      border-radius: 3px;
+      animation: pulseLaser 2.2s infinite ease-in-out;
+    }
+    @keyframes pulseLaser {
+      0% { top: 0; opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+    .bridge-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      border: 2px solid var(--border-dark);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-pop-sm);
+      color: var(--text);
+      margin: 10px 0;
+    }
+    .bridge-badge .badge-icon {
+      color: var(--coral);
+      animation: bounceDown 1.6s infinite;
+    }
+    @keyframes bounceDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(3px); }
+    }
+    .bridge-caption {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-style: italic;
+      max-width: 440px;
+    }
+
+    @media (max-width: 960px) {
+      .waypoint-tracker { display: none; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Ambient Gradient Orbs -->
+
+  <!-- Ambient Gradient Background Orbs -->
   <div class="ambient-orb ambient-orb-1"></div>
   <div class="ambient-orb ambient-orb-2"></div>
-  <!-- Top Navigation Header -->
+
+  <!-- Pinned Top Navigation Header -->
   <header class="site-header">
     <div class="shell header-inner">
-      <a href="index.html" class="brand">
+      <a href="#section-hero" class="brand">
         <div class="brand-avatar">MC</div>
         <div class="brand-text">
           <span class="brand-name">Miraya Chauhan</span>
@@ -25,286 +1258,1236 @@
         </div>
       </a>
 
-      <!-- Page Nav Tabs -->
-      <nav class="nav-tabs" aria-label="Main Navigation">
-        <a href="index.html" class="nav-pill-btn active"><span class="pill-num">01</span> Home</a>
-        <a href="about.html" class="nav-pill-btn"><span class="pill-num">02</span> About</a>
-        <a href="toolkit.html" class="nav-pill-btn"><span class="pill-num">03</span> Toolkit</a>
-        <a href="projects.html" class="nav-pill-btn"><span class="pill-num">04</span> Projects</a>
-        <a href="contact.html" class="nav-pill-btn"><span class="pill-num">05</span> Contact</a>
+      <!-- Quick Nav Pills -->
+      <nav class="nav-tabs" aria-label="Section Navigation">
+        <a href="#section-hero" class="nav-pill-btn active"><span class="pill-num">01</span> Intro</a>
+        <a href="#section-matrix" class="nav-pill-btn"><span class="pill-num">02</span> The Matrix</a>
+        <a href="#section-journey" class="nav-pill-btn"><span class="pill-num">03</span> Milestones</a>
+        <a href="#section-toolkit" class="nav-pill-btn"><span class="pill-num">04</span> Toolkit</a>
+        <a href="#section-work" class="nav-pill-btn"><span class="pill-num">05</span> Work</a>
+        <a href="#section-zine" class="nav-pill-btn"><span class="pill-num">06</span> Zine</a>
+        <a href="#section-contact" class="nav-pill-btn"><span class="pill-num">07</span> Connect</a>
       </nav>
 
       <div style="display: flex; align-items: center; gap: 10px;">
-        <a href="contact.html" class="header-cta">Let's talk ↗</a>
+        <a href="#section-contact" class="header-cta">Let's talk ↗</a>
         <button class="mobile-toggle" aria-label="Toggle Navigation">☰</button>
       </div>
     </div>
 
-    <!-- Scroll Progress Indicator -->
+    <!-- Scroll Progress Strip -->
     <div class="scroll-progress-track">
       <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
     </div>
   </header>
+
+  <!-- Floating Vertical Waypoint Tracker (Desktop) -->
+  <aside class="waypoint-tracker" aria-label="Waypoint section tracker">
+    <a href="#section-hero" class="waypoint-node active" data-target="section-hero">
+      <span class="waypoint-tooltip">01 Intro</span>
+    </a>
+    <a href="#section-matrix" class="waypoint-node" data-target="section-matrix">
+      <span class="waypoint-tooltip">02 The Matrix</span>
+    </a>
+    <a href="#section-journey" class="waypoint-node" data-target="section-journey">
+      <span class="waypoint-tooltip">03 Milestones</span>
+    </a>
+    <a href="#section-toolkit" class="waypoint-node" data-target="section-toolkit">
+      <span class="waypoint-tooltip">04 Toolkit</span>
+    </a>
+    <a href="#section-work" class="waypoint-node" data-target="section-work">
+      <span class="waypoint-tooltip">05 Practical Work</span>
+    </a>
+    <a href="#section-zine" class="waypoint-node" data-target="section-zine">
+      <span class="waypoint-tooltip">06 Off-Screen Zine</span>
+    </a>
+    <a href="#section-contact" class="waypoint-node" data-target="section-contact">
+      <span class="waypoint-tooltip">07 Get in Touch</span>
+    </a>
+  </aside>
+
+  <!-- Complete Unified Narrative Main Content -->
   <main>
     <div class="shell">
 
-      <!-- Hero Split Section -->
-      <section class="hero-split reveal-node">
-        <div class="hero-left">
-          <div class="sticker-pill">
-            <span class="pulse-dot"></span>
-            <span>Rishihood University × Newton School of Tech</span>
+      <!-- ============================= 01: HERO & VECTOR POD ============================= -->
+      <section class="reveal-node" id="section-hero">
+        <div class="hero-split">
+          <div class="hero-left">
+            <div class="sticker-pill">
+              <span class="pulse-dot"></span>
+              <span>Rishihood University × Newton School of Tech</span>
+            </div>
+
+            <h1 class="hero-title">
+              Writing <span class="tag-coral">code</span>, dissecting <span class="tag-blue">products</span>, and racing on <span class="serif-accent">eight wheels.</span>
+            </h1>
+
+            <p class="hero-lead">
+              I'm <strong>Miraya Chauhan</strong>. First-year Computer Science &amp; Artificial Intelligence student, 2-time state speed skating champion, and Model UN debater. Focused on making software work and making ideas clear.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#section-matrix" class="action-btn coral">The 4-Pillar Matrix ↓</a>
+              <a href="#section-work" class="action-btn outline">View practical projects ↗</a>
+              <a href="#section-contact" class="action-btn outline">Get in touch</a>
+            </div>
           </div>
 
-          <h1 class="hero-title">
-            Writing <span class="tag-coral">code</span>, dissecting <span class="tag-blue">products</span>, and racing on <span class="serif-accent">eight wheels.</span>
-          </h1>
+          <!-- Interactive Vector Playground Pod -->
+          <div class="illustration-pod">
+            <div class="pod-header">
+              <div class="pod-title">
+                <span>✦ Interactive Vector Pod</span>
+              </div>
+              <span class="pod-pill">Drag &amp; Click</span>
+            </div>
 
-          <p class="hero-lead">
-            I'm <strong>Miraya Chauhan</strong>. First-year Computer Science &amp; Artificial Intelligence student, 2-time state speed skating champion, and Model UN debater. Focused on making software work and making ideas clear.
-          </p>
+            <canvas id="hero-canvas"></canvas>
 
-          <div class="hero-actions">
-            <a href="about.html" class="action-btn coral">Explore my story →</a>
-            <a href="projects.html" class="action-btn outline">View practical projects ↗</a>
-            <a href="contact.html" class="action-btn outline">Get in touch</a>
+            <div class="pod-controls">
+              <div class="pod-modes">
+                <button class="mode-btn active" data-mode="skate">⚡ Speed Skate</button>
+                <button class="mode-btn" data-mode="code">&lt;/&gt; Code Terminal</button>
+                <button class="mode-btn" data-mode="sparks">✨ Rainbow Star</button>
+              </div>
+              <span class="pod-tip">Click or drag across to animate</span>
+            </div>
           </div>
         </div>
 
-        <!-- Interactive Vector Playground Pod -->
-        <div class="illustration-pod">
-          <div class="pod-header">
-            <div class="pod-title">
-              <span>✦ Interactive Vector Pod</span>
+        <!-- Infinite Dual-Marquee Ribbon -->
+        <div class="ticker-wrap">
+          <div class="ticker-bar bar-primary">
+            <div class="ticker-scroll">
+              <span class="ticker-item">✦ Python Programming</span>
+              <span class="ticker-item">★ 2x State Skating Champion</span>
+              <span class="ticker-item">✦ Product Teardowns</span>
+              <span class="ticker-item">★ IEO &amp; IMO Olympiad Medalist</span>
+              <span class="ticker-item">✦ Model United Nations</span>
+              <span class="ticker-item">★ Generative AI &amp; Vibe Coding</span>
+              <span class="ticker-item">✦ Student Exchange Scholar</span>
+              <!-- Duplicate for seamless loop -->
+              <span class="ticker-item">✦ Python Programming</span>
+              <span class="ticker-item">★ 2x State Skating Champion</span>
+              <span class="ticker-item">✦ Product Teardowns</span>
+              <span class="ticker-item">★ IEO &amp; IMO Olympiad Medalist</span>
+              <span class="ticker-item">✦ Model United Nations</span>
+              <span class="ticker-item">★ Generative AI &amp; Vibe Coding</span>
+              <span class="ticker-item">✦ Student Exchange Scholar</span>
             </div>
-            <span class="pod-pill">Drag &amp; Click</span>
           </div>
 
-          <canvas id="hero-canvas"></canvas>
-
-          <div class="pod-controls">
-            <div class="pod-modes">
-              <button class="mode-btn active" data-mode="skate">⚡ Speed Skate</button>
-              <button class="mode-btn" data-mode="code">&lt;/&gt; Code Terminal</button>
-              <button class="mode-btn" data-mode="sparks">✨ Rainbow Star</button>
+          <div class="ticker-bar bar-secondary">
+            <div class="ticker-scroll reverse">
+              <span class="ticker-item">⚡ High-Pressure Focus</span>
+              <span class="ticker-item">✦ First-Principles Thinking</span>
+              <span class="ticker-item">⚡ Quantitative Rigor</span>
+              <span class="ticker-item">✦ Structured Debate</span>
+              <span class="ticker-item">⚡ Clean Python Scripts</span>
+              <span class="ticker-item">✦ Rapid Prototyping</span>
+              <!-- Duplicate -->
+              <span class="ticker-item">⚡ High-Pressure Focus</span>
+              <span class="ticker-item">✦ First-Principles Thinking</span>
+              <span class="ticker-item">⚡ Quantitative Rigor</span>
+              <span class="ticker-item">✦ Structured Debate</span>
+              <span class="ticker-item">⚡ Clean Python Scripts</span>
+              <span class="ticker-item">✦ Rapid Prototyping</span>
             </div>
-            <span class="pod-tip">Click or drag across to animate</span>
           </div>
         </div>
       </section>
 
-      <!-- Infinite Dual-Marquee Ribbon -->
-      <div class="ticker-wrap reveal-node">
-        <div class="ticker-bar bar-primary">
-          <div class="ticker-scroll">
-            <span class="ticker-item">✦ Python Programming</span>
-            <span class="ticker-item">★ 2x State Skating Champion</span>
-            <span class="ticker-item">✦ Product Teardowns</span>
-            <span class="ticker-item">★ IEO &amp; IMO Olympiad Medalist</span>
-            <span class="ticker-item">✦ Model United Nations</span>
-            <span class="ticker-item">★ Generative AI &amp; Vibe Coding</span>
-            <span class="ticker-item">✦ Student Exchange Scholar</span>
-            <!-- Duplicate for seamless loop -->
-            <span class="ticker-item">✦ Python Programming</span>
-            <span class="ticker-item">★ 2x State Skating Champion</span>
-            <span class="ticker-item">✦ Product Teardowns</span>
-            <span class="ticker-item">★ IEO &amp; IMO Olympiad Medalist</span>
-            <span class="ticker-item">✦ Model United Nations</span>
-            <span class="ticker-item">★ Generative AI &amp; Vibe Coding</span>
-            <span class="ticker-item">✦ Student Exchange Scholar</span>
-          </div>
+      <!-- Connective Bridge 01 -> 02 -->
+      <div class="connective-bridge reveal-node">
+        <div class="bridge-line"></div>
+        <div class="bridge-pod" title="Energy & Core Disciplines">
+          <svg class="bridge-illust-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle class="anim-spin" cx="36" cy="36" r="28" stroke="#121520" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4" />
+            <circle cx="36" cy="8" r="3.5" fill="#ff473a" stroke="#121520" stroke-width="1.5" />
+            <circle cx="64" cy="36" r="3.5" fill="#2563eb" stroke="#121520" stroke-width="1.5" />
+            <circle cx="36" cy="64" r="3.5" fill="#d8f831" stroke="#121520" stroke-width="1.5" />
+            <circle cx="8" cy="36" r="3.5" fill="#8b5cf6" stroke="#121520" stroke-width="1.5" />
+            <polygon class="anim-pulse" points="36,18 50,36 36,54 22,36" fill="#ffebe9" stroke="#121520" stroke-width="2" />
+            <circle cx="36" cy="36" r="4" fill="#ff473a" />
+          </svg>
         </div>
-
-        <div class="ticker-bar bar-secondary">
-          <div class="ticker-scroll reverse">
-            <span class="ticker-item">⚡ High-Pressure Focus</span>
-            <span class="ticker-item">✦ First-Principles Thinking</span>
-            <span class="ticker-item">⚡ Quantitative Rigor</span>
-            <span class="ticker-item">✦ Structured Debate</span>
-            <span class="ticker-item">⚡ Clean Python Scripts</span>
-            <span class="ticker-item">✦ Rapid Prototyping</span>
-            <!-- Duplicate -->
-            <span class="ticker-item">⚡ High-Pressure Focus</span>
-            <span class="ticker-item">✦ First-Principles Thinking</span>
-            <span class="ticker-item">⚡ Quantitative Rigor</span>
-            <span class="ticker-item">✦ Structured Debate</span>
-            <span class="ticker-item">⚡ Clean Python Scripts</span>
-            <span class="ticker-item">✦ Rapid Prototyping</span>
-          </div>
+        <div class="bridge-badge">
+          <span class="badge-icon">↓</span>
+          <span>WAYPOINT 01 ⟷ 02 : THE MATRIX</span>
         </div>
+        <div class="bridge-caption">From high-velocity fundamentals into the four core disciplines I train every week</div>
       </div>
 
-      <!-- Portfolio Chapters Navigation Hub -->
-      <section style="margin-top: 50px;" class="reveal-node">
+      <!-- ============================= 02: THE CORE MATRIX ============================= -->
+      <section class="reveal-node" id="section-matrix">
         <div class="section-head">
           <div>
-            <span class="page-eyebrow blue">PORTFOLIO CHAPTERS</span>
-            <h2 class="section-title">Explore my world <em>in depth.</em></h2>
+            <span class="page-eyebrow coral">THE MATRIX · 02</span>
+            <h2 class="section-title">Where my energy <em>actually goes.</em></h2>
           </div>
           <p class="section-desc">
-            Browse through my background, technical capabilities, projects, and contact channels across dedicated chapters.
+            A candid look at the four core pillars of what I practice and build every single week.
           </p>
         </div>
 
-        <div class="hub-grid">
-          <!-- Hub Card 1: About -->
-          <a href="about.html" class="hub-card">
-            <div class="hub-card-top">
-              <div class="hub-card-icon-pod" title="Story & Journey">
-                <svg class="bridge-illust-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="36" cy="36" r="28" fill="#ffffff" stroke="#121520" stroke-width="2" />
-                  <path d="M16 48 C 22 24, 50 20, 56 36" stroke="#2563eb" stroke-width="2" stroke-dasharray="4 3" />
-                  <g class="anim-needle" style="transform-origin: 36px 36px;">
-                    <line x1="36" y1="36" x2="48" y2="20" stroke="#121520" stroke-width="2.5" stroke-linecap="round" />
-                    <polygon points="48,20 44,24 50,26" fill="#ff473a" />
-                    <circle cx="36" cy="36" r="4.5" fill="#121520" />
-                  </g>
-                  <g class="anim-sparkle" transform="translate(48, 12)">
-                    <polygon points="6,0 7.8,4.2 12,6 7.8,7.8 6,12 4.2,7.8 0,6 4.2,4.2" fill="#ffc425" stroke="#121520" stroke-width="1" />
-                  </g>
-                </svg>
-              </div>
-              <span class="page-eyebrow coral">CHAPTER 02</span>
+        <div class="matrix-grid">
+          <!-- Pillar 1: Software -->
+          <div class="matrix-card card-coral">
+            <div class="card-banner">
+              <span>&lt;python_core /&gt;</span>
+              <span>💻</span>
             </div>
-            <div class="hub-card-content">
-              <h3>Story, Mindset &amp; Milestones</h3>
-              <p>7 years of competitive speed skating, double Olympiad medals, student exchange, and what drives my discipline.</p>
-              <span class="hub-card-action">Read my journey →</span>
+            <h3>Code &amp; AI Fundamentals</h3>
+            <p>
+              Mastering core software in Python: data structures, algorithmic logic, and automation scripts. Leveraging modern AI agents to prototype MVPs rapidly without getting bogged down in boilerplate.
+            </p>
+            <div class="tag-cluster">
+              <span class="tag-chip accent">Python 3</span>
+              <span class="tag-chip">Data Structures</span>
+              <span class="tag-chip">AI Copilots</span>
+              <span class="tag-chip">Problem Solving</span>
             </div>
-          </a>
+          </div>
 
-          <!-- Hub Card 2: Toolkit -->
-          <a href="toolkit.html" class="hub-card">
-            <div class="hub-card-top">
-              <div class="hub-card-icon-pod" title="Capabilities">
-                <svg class="bridge-illust-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="20" y="20" width="32" height="32" rx="6" fill="#edf4ff" stroke="#121520" stroke-width="2" />
-                  <line x1="10" y1="28" x2="20" y2="28" stroke="#121520" stroke-width="2" />
-                  <line x1="10" y1="44" x2="20" y2="44" stroke="#121520" stroke-width="2" />
-                  <line x1="52" y1="28" x2="62" y2="28" stroke="#121520" stroke-width="2" />
-                  <line x1="52" y1="44" x2="62" y2="44" stroke="#121520" stroke-width="2" />
-                  <line x1="28" y1="10" x2="28" y2="20" stroke="#121520" stroke-width="2" />
-                  <line x1="44" y1="10" x2="44" y2="20" stroke="#121520" stroke-width="2" />
-                  <line x1="28" y1="52" x2="28" y2="62" stroke="#121520" stroke-width="2" />
-                  <line x1="44" y1="52" x2="44" y2="62" stroke="#121520" stroke-width="2" />
-                  <text x="36" y="39" font-family="monospace" font-size="11" font-weight="800" fill="#2563eb" text-anchor="middle" dominant-baseline="middle">&lt;/&gt;</text>
-                  <circle class="anim-pulse-dot" cx="10" cy="28" r="2.5" fill="#10b981" />
-                  <circle class="anim-pulse-dot" cx="62" cy="44" r="2.5" fill="#ff473a" />
-                </svg>
-              </div>
-              <span class="page-eyebrow lime">CHAPTER 03</span>
+          <!-- Pillar 2: Product -->
+          <div class="matrix-card card-blue">
+            <div class="card-banner">
+              <span>[product_breakdown]</span>
+              <span>🔍</span>
             </div>
-            <div class="hub-card-content">
-              <h3>Technical Toolkit &amp; Skills</h3>
-              <p>Python engineering, quantitative mathematical logic, modern AI agents, product breakdown frameworks, and oratory.</p>
-              <span class="hub-card-action">View capabilities →</span>
+            <h3>Product Deconstruction</h3>
+            <p>
+              Taking apart consumer software through teardowns. Exploring user flows, friction points, monetization tiers, and the subtle business decisions that make apps like Spotify, Notion, or Duolingo thrive.
+            </p>
+            <div class="tag-cluster">
+              <span class="tag-chip accent">Product Guys Club</span>
+              <span class="tag-chip">UX Teardowns</span>
+              <span class="tag-chip">Growth Loops</span>
+              <span class="tag-chip">Case Studies</span>
             </div>
-          </a>
+          </div>
 
-          <!-- Hub Card 3: Projects -->
-          <a href="projects.html" class="hub-card">
-            <div class="hub-card-top">
-              <div class="hub-card-icon-pod" title="Projects">
-                <svg class="bridge-illust-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="12" y="14" width="48" height="44" rx="5" fill="#ffffff" stroke="#121520" stroke-width="2" />
-                  <line x1="12" y1="26" x2="60" y2="26" stroke="#121520" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.35" />
-                  <line x1="28" y1="14" x2="28" y2="58" stroke="#121520" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.35" />
-                  <g class="anim-gear" style="transform-origin: 46px 42px;">
-                    <circle cx="46" cy="42" r="12" fill="#fff8e1" stroke="#121520" stroke-width="2" />
-                    <circle cx="46" cy="42" r="4.5" fill="#ffffff" stroke="#121520" stroke-width="1.5" />
-                    <line x1="46" y1="27" x2="46" y2="30" stroke="#121520" stroke-width="2.5" stroke-linecap="round" />
-                    <line x1="46" y1="54" x2="46" y2="57" stroke="#121520" stroke-width="2.5" stroke-linecap="round" />
-                    <line x1="31" y1="42" x2="34" y2="42" stroke="#121520" stroke-width="2.5" stroke-linecap="round" />
-                    <line x1="58" y1="42" x2="61" y2="42" stroke="#121520" stroke-width="2.5" stroke-linecap="round" />
-                  </g>
-                  <rect x="18" y="32" width="14" height="18" rx="3" fill="#d8f831" stroke="#121520" stroke-width="1.5" />
-                  <polygon class="anim-cursor" points="26,20 32,32 28,31 25,37 23,36 26,30 21,30" fill="#ff473a" stroke="#121520" stroke-width="1" />
-                </svg>
-              </div>
-              <span class="page-eyebrow yellow">CHAPTER 04</span>
+          <!-- Pillar 3: Skating / Athletics -->
+          <div class="matrix-card card-lime">
+            <div class="card-banner">
+              <span>35_kmh_speed_racing</span>
+              <span>⛸️</span>
             </div>
-            <div class="hub-card-content">
-              <h3>Practical Work &amp; Case Studies</h3>
-              <p>Product Guys consumer teardowns, Python algorithm implementations, AI agent experiments, and UN policy papers.</p>
-              <span class="hub-card-action">Browse practical work →</span>
+            <h3>Athletic Grit &amp; Speed</h3>
+            <p>
+              Two-time State Champion in speed skating. Years of tight corners, 35 km/h heats, and competitive racing taught me how to stay calm under intense pressure and bounce back fast after a fall.
+            </p>
+            <div class="tag-cluster">
+              <span class="tag-chip accent">2x State Champion</span>
+              <span class="tag-chip">High-Pressure Calm</span>
+              <span class="tag-chip">Resilience</span>
+              <span class="tag-chip">Stamina</span>
             </div>
-          </a>
+          </div>
 
-          <!-- Hub Card 4: Contact -->
-          <a href="contact.html" class="hub-card">
-            <div class="hub-card-top">
-              <div class="hub-card-icon-pod" title="Contact">
-                <svg class="bridge-illust-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="36" cy="36" r="28" fill="#ffffff" stroke="#121520" stroke-width="2" />
-                  <path class="anim-signal-1" d="M18 48 A 22 22 0 0 1 48 18" stroke="#ff473a" stroke-width="1.5" stroke-dasharray="3 3" fill="none" />
-                  <path class="anim-signal-2" d="M22 52 A 26 26 0 0 1 54 20" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" fill="none" />
-                  <g class="anim-plane">
-                    <polygon points="26,4 4,16 12,20 26,4" fill="#ff473a" stroke="#121520" stroke-width="1.5" stroke-linejoin="round" />
-                    <polygon points="26,4 12,20 18,24 26,4" fill="#ffffff" stroke="#121520" stroke-width="1.5" stroke-linejoin="round" />
-                    <polygon points="12,20 14,26 18,24 12,20" fill="#121520" stroke="#121520" stroke-width="1" />
-                  </g>
-                </svg>
-              </div>
-              <span class="page-eyebrow coral">CHAPTER 05</span>
+          <!-- Pillar 4: Debate / MUN -->
+          <div class="matrix-card card-purple">
+            <div class="card-banner">
+              <span>resolution_drafting</span>
+              <span>🗣️</span>
             </div>
-            <div class="hub-card-content">
-              <h3>Get in Touch &amp; Direct Channels</h3>
-              <p>Email, LinkedIn, GitHub, campus location in Sonipat, and quick messaging form for collaborations.</p>
-              <span class="hub-card-action">Say hey →</span>
+            <h3>Structured Debate &amp; Oratory</h3>
+            <p>
+              Experienced Model United Nations (MUN) delegate and double Olympiad medalist (Math IMO &amp; English IEO). I love translating intricate technical concepts into clear, compelling arguments.
+            </p>
+            <div class="tag-cluster">
+              <span class="tag-chip accent">MUN Diplomacy</span>
+              <span class="tag-chip">Public Speaking</span>
+              <span class="tag-chip">IMO Medalist</span>
+              <span class="tag-chip">IEO Medalist</span>
             </div>
-          </a>
+          </div>
         </div>
       </section>
 
-      <!-- Connective Bridge to Next Page -->
-      <a href="about.html" class="next-page-bridge reveal-node">
-        <div class="bridge-left">
-          <div class="bridge-pod" title="Next Chapter">
-            <svg class="bridge-illust-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="36" cy="36" r="28" fill="#ffffff" stroke="#121520" stroke-width="2" />
-              <path d="M16 48 C 22 24, 50 20, 56 36" stroke="#2563eb" stroke-width="2" stroke-dasharray="4 3" />
-              <g class="anim-needle" style="transform-origin: 36px 36px;">
-                <line x1="36" y1="36" x2="48" y2="20" stroke="#121520" stroke-width="2.5" stroke-linecap="round" />
-                <polygon points="48,20 44,24 50,26" fill="#ff473a" />
-                <circle cx="36" cy="36" r="4.5" fill="#121520" />
-              </g>
-              <g class="anim-sparkle" transform="translate(48, 12)">
-                <polygon points="6,0 7.8,4.2 12,6 7.8,7.8 6,12 4.2,7.8 0,6 4.2,4.2" fill="#ffc425" stroke="#121520" stroke-width="1" />
-              </g>
-            </svg>
+      <!-- Connective Bridge 02 -> 03 -->
+      <div class="connective-bridge reveal-node">
+        <div class="bridge-line"></div>
+        <div class="bridge-pod" title="Velocity & Milestones">
+          <svg class="bridge-illust-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="36" cy="36" r="28" fill="#ffffff" stroke="#121520" stroke-width="2" />
+            <path d="M16 48 C 22 24, 50 20, 56 36" stroke="#2563eb" stroke-width="2" stroke-dasharray="4 3" />
+            <g class="anim-needle" style="transform-origin: 36px 36px;">
+              <line x1="36" y1="36" x2="48" y2="20" stroke="#121520" stroke-width="2.5" stroke-linecap="round" />
+              <polygon points="48,20 44,24 50,26" fill="#ff473a" />
+              <circle cx="36" cy="36" r="4.5" fill="#121520" />
+            </g>
+            <g class="anim-sparkle" transform="translate(48, 12)">
+              <polygon points="6,0 7.8,4.2 12,6 7.8,7.8 6,12 4.2,7.8 0,6 4.2,4.2" fill="#ffc425" stroke="#121520" stroke-width="1" />
+            </g>
+          </svg>
+        </div>
+        <div class="bridge-badge">
+          <span class="badge-icon">↓</span>
+          <span>WAYPOINT 02 ⟷ 03 : PROVEN TRAJECTORY</span>
+        </div>
+        <div class="bridge-caption">Translating athletic discipline and quantitative logic into milestones</div>
+      </div>
+
+      <!-- ============================= 03: JOURNEY & MILESTONES ============================= -->
+      <section class="reveal-node" id="section-journey">
+        <div class="section-head">
+          <div>
+            <span class="page-eyebrow blue">JOURNEY &amp; MILESTONES · 03</span>
+            <h2 class="section-title">Milestones that <em>shaped me.</em></h2>
           </div>
-          <div class="bridge-meta">
-            <div class="bridge-kicker">Next Chapter · 02</div>
-            <h3>Discover My Story, Milestones &amp; Mindset</h3>
-            <p>From 7 years of speed skating to international Olympiads and life outside the laptop.</p>
+          <p class="section-desc">
+            From the competitive racing rink to international Olympiad examinations and university classrooms.
+          </p>
+        </div>
+
+        <div class="journey-layout">
+          <!-- Track List -->
+          <div class="track-list">
+            <div class="track-card">
+              <div class="track-num">01</div>
+              <div class="track-content">
+                <h4>Two-Time State Champion — Speed Skating</h4>
+                <p>Competitive speed skating representing the state, demonstrating discipline, precision, and physical stamina.</p>
+              </div>
+              <span class="track-tag">Athletics</span>
+            </div>
+
+            <div class="track-card">
+              <div class="track-num">02</div>
+              <div class="track-content">
+                <h4>Double Olympiad Medalist (IMO &amp; IEO)</h4>
+                <p>Medals in the International Mathematics Olympiad and International English Olympiad. Quantitative logic meets articulate language.</p>
+              </div>
+              <span class="track-tag">Academics</span>
+            </div>
+
+            <div class="track-card">
+              <div class="track-num">03</div>
+              <div class="track-content">
+                <h4>International Student Exchange Programme</h4>
+                <p>Immersed in cross-cultural academic classrooms abroad, building global empathy, quick adaptability, and cross-team collaboration.</p>
+              </div>
+              <span class="track-tag">Global Exposure</span>
+            </div>
+
+            <div class="track-card">
+              <div class="track-num">04</div>
+              <div class="track-content">
+                <h4>Model United Nations (MUN) Delegate</h4>
+                <p>Deep policy research, resolution drafting, cross-bloc diplomacy, and high-stakes structured debate.</p>
+              </div>
+              <span class="track-tag">Diplomacy</span>
+            </div>
+          </div>
+
+          <!-- Essay & Quote -->
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <div class="matrix-card card-lime">
+              <div class="card-banner">
+                <span>resilience_and_grit</span>
+                <span>🏁</span>
+              </div>
+              <h3>What 7 years of speed skating taught me</h3>
+              <p>
+                Racing around tight banked tracks taught me that consistency beats natural talent almost every time. You don't become a state champion on an easy day; you earn it by showing up on freezing mornings when your shins hurt. That exact endurance applies to debugging complex code or defending an MUN resolution.
+              </p>
+            </div>
+
+            <div class="quote-poster">
+              <div class="quote-statement">
+                “Growth begins when curiosity turns into <em>action</em>.”
+              </div>
+              <div class="quote-author">
+                — Miraya Chauhan · Principle across the code editor, debate chamber, and racing rink.
+              </div>
+            </div>
           </div>
         </div>
-        <div class="bridge-right">
-          <span class="action-btn coral">Continue to Story →</span>
+      </section>
+
+      <!-- Connective Bridge 03 -> 04 -->
+      <div class="connective-bridge reveal-node">
+        <div class="bridge-line"></div>
+        <div class="bridge-pod" title="Algorithmic Architecture">
+          <svg class="bridge-illust-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="20" width="32" height="32" rx="6" fill="#edf4ff" stroke="#121520" stroke-width="2" />
+            <line x1="10" y1="28" x2="20" y2="28" stroke="#121520" stroke-width="2" />
+            <line x1="10" y1="44" x2="20" y2="44" stroke="#121520" stroke-width="2" />
+            <line x1="52" y1="28" x2="62" y2="28" stroke="#121520" stroke-width="2" />
+            <line x1="52" y1="44" x2="62" y2="44" stroke="#121520" stroke-width="2" />
+            <line x1="28" y1="10" x2="28" y2="20" stroke="#121520" stroke-width="2" />
+            <line x1="44" y1="10" x2="44" y2="20" stroke="#121520" stroke-width="2" />
+            <line x1="28" y1="52" x2="28" y2="62" stroke="#121520" stroke-width="2" />
+            <line x1="44" y1="52" x2="44" y2="62" stroke="#121520" stroke-width="2" />
+            <text x="36" y="39" font-family="monospace" font-size="11" font-weight="800" fill="#2563eb" text-anchor="middle" dominant-baseline="middle">&lt;/&gt;</text>
+            <circle class="anim-pulse-dot" cx="10" cy="28" r="2.5" fill="#10b981" />
+            <circle class="anim-pulse-dot" cx="62" cy="44" r="2.5" fill="#ff473a" />
+          </svg>
         </div>
-      </a>
+        <div class="bridge-badge">
+          <span class="badge-icon">↓</span>
+          <span>WAYPOINT 03 ⟷ 04 : TOOLKIT ARSENAL</span>
+        </div>
+        <div class="bridge-caption">The practical technologies and analytical skills that power my work</div>
+      </div>
+
+      <!-- ============================= 04: TOOLKIT ============================= -->
+      <section class="reveal-node" id="section-toolkit">
+        <div class="section-head">
+          <div>
+            <span class="page-eyebrow lime">TOOLKIT · 04</span>
+            <h2 class="section-title">Capabilities I bring to <em>the table.</em></h2>
+          </div>
+          <p class="section-desc">
+            Honest capabilities across software engineering, product teardowns, and mathematical logic.
+          </p>
+        </div>
+
+        <div class="matrix-grid">
+          <div class="matrix-card card-coral">
+            <div class="card-banner">
+              <span>python_programming</span>
+              <span>🐍</span>
+            </div>
+            <h3>Python Core Programming</h3>
+            <p>Fluency in Python syntax, data structures (lists, dictionaries, sets), functional scripting, loops, and algorithmic problem-solving.</p>
+            <div class="tag-cluster">
+              <span class="tag-chip accent">Python 3</span>
+              <span class="tag-chip">Algorithms</span>
+              <span class="tag-chip">Automation</span>
+              <span class="tag-chip">Git / GitHub</span>
+            </div>
+          </div>
+
+          <div class="matrix-card card-blue">
+            <div class="card-banner">
+              <span>ai_and_agents</span>
+              <span>🤖</span>
+            </div>
+            <h3>AI Tooling &amp; Vibe Coding</h3>
+            <p>Using agentic coding assistants, prompt engineering techniques, and LLM APIs to build fast functional prototypes without getting bogged down.</p>
+            <div class="tag-cluster">
+              <span class="tag-chip accent">Agentic AI</span>
+              <span class="tag-chip">Prompt Engineering</span>
+              <span class="tag-chip">Rapid MVPs</span>
+            </div>
+          </div>
+
+          <div class="matrix-card card-lime">
+            <div class="card-banner">
+              <span>quantitative_rigor</span>
+              <span>📐</span>
+            </div>
+            <h3>Quantitative Rigor</h3>
+            <p>Mathematical logic validated through International Mathematics Olympiad (IMO) recognition; discrete logic and structured problem solving.</p>
+            <div class="tag-cluster">
+              <span class="tag-chip accent">IMO Medal</span>
+              <span class="tag-chip">Discrete Math</span>
+              <span class="tag-chip">Logic</span>
+            </div>
+          </div>
+
+          <div class="matrix-card card-purple">
+            <div class="card-banner">
+              <span>product_strategy</span>
+              <span>🎯</span>
+            </div>
+            <h3>Product Mindset</h3>
+            <p>Analyzing what makes consumer apps sticky, evaluating user onboarding, retention loops, and connecting business decisions with UX architecture.</p>
+            <div class="tag-cluster">
+              <span class="tag-chip accent">Product Teardowns</span>
+              <span class="tag-chip">UX Analysis</span>
+              <span class="tag-chip">User Journeys</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Connective Bridge 04 -> 05 -->
+      <div class="connective-bridge reveal-node">
+        <div class="bridge-line"></div>
+        <div class="bridge-pod" title="Engineering & Blueprint">
+          <svg class="bridge-illust-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="12" y="14" width="48" height="44" rx="5" fill="#ffffff" stroke="#121520" stroke-width="2" />
+            <line x1="12" y1="26" x2="60" y2="26" stroke="#121520" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.35" />
+            <line x1="28" y1="14" x2="28" y2="58" stroke="#121520" stroke-width="1.5" stroke-dasharray="2 2" opacity="0.35" />
+            <g class="anim-gear" style="transform-origin: 46px 42px;">
+              <circle cx="46" cy="42" r="12" fill="#fff8e1" stroke="#121520" stroke-width="2" />
+              <circle cx="46" cy="42" r="4.5" fill="#ffffff" stroke="#121520" stroke-width="1.5" />
+              <line x1="46" y1="27" x2="46" y2="30" stroke="#121520" stroke-width="2.5" stroke-linecap="round" />
+              <line x1="46" y1="54" x2="46" y2="57" stroke="#121520" stroke-width="2.5" stroke-linecap="round" />
+              <line x1="31" y1="42" x2="34" y2="42" stroke="#121520" stroke-width="2.5" stroke-linecap="round" />
+              <line x1="58" y1="42" x2="61" y2="42" stroke="#121520" stroke-width="2.5" stroke-linecap="round" />
+            </g>
+            <rect x="18" y="32" width="14" height="18" rx="3" fill="#d8f831" stroke="#121520" stroke-width="1.5" />
+            <polygon class="anim-cursor" points="26,20 32,32 28,31 25,37 23,36 26,30 21,30" fill="#ff473a" stroke="#121520" stroke-width="1" />
+          </svg>
+        </div>
+        <div class="bridge-badge">
+          <span class="badge-icon">↓</span>
+          <span>WAYPOINT 04 ⟷ 05 : PRACTICAL EXECUTION</span>
+        </div>
+        <div class="bridge-caption">Putting tools into practice: Code repositories, campus breakdowns, and policy briefs</div>
+      </div>
+
+      <!-- ============================= 05: SELECTED WORK ============================= -->
+      <section class="reveal-node" id="section-work">
+        <div class="section-head">
+          <div>
+            <span class="page-eyebrow yellow">SELECTED WORK · 05</span>
+            <h2 class="section-title">Projects and <em>practical work.</em></h2>
+          </div>
+          <p class="section-desc">
+            What I have been building, breaking down, and researching as a first-year student.
+          </p>
+        </div>
+
+        <div class="matrix-grid">
+          <!-- Product Guys -->
+          <div class="matrix-card card-blue">
+            <div class="card-banner">
+              <span>product_teardowns</span>
+              <span>🔍</span>
+            </div>
+            <h3>Product Breakdown Studies (Product Guys)</h3>
+            <p>
+              A collaborative campus initiative where we study popular tech applications, analyze why specific features were built, how they monetize, and what drives user retention.
+            </p>
+            <p style="font-size: 0.84rem; color: var(--text-dim); margin-top: -6px;">
+              <strong>My contribution:</strong> Researching consumer software journeys, analyzing onboarding friction, and creating quick quizzes for peer discussions.
+            </p>
+            <div class="tag-cluster">
+              <span class="tag-chip accent">Product Teardowns</span>
+              <span class="tag-chip">User Experience</span>
+              <span class="tag-chip">Monetization Models</span>
+            </div>
+          </div>
+
+          <!-- Python Problem Solving -->
+          <div class="matrix-card card-coral">
+            <div class="card-banner">
+              <span>algorithms_lab</span>
+              <span>⚡</span>
+            </div>
+            <h3>Python Algorithmic Implementations</h3>
+            <p>
+              A structured problem-solving repository developed during first-year CS studies. Covers search and sorting algorithms, string parsing, array manipulation, and mathematical modeling.
+            </p>
+            <p style="font-size: 0.84rem; color: var(--text-dim); margin-top: -6px;">
+              <strong>Focus:</strong> Clean code, time complexity awareness, writing modular functions, and testing edge cases.
+            </p>
+            <div class="tag-cluster">
+              <span class="tag-chip accent">Python 3</span>
+              <span class="tag-chip">Algorithms</span>
+              <span class="tag-chip">Clean Code</span>
+            </div>
+          </div>
+
+          <!-- AI Prototyping -->
+          <div class="matrix-card card-lime">
+            <div class="card-banner">
+              <span>ai_prototypes</span>
+              <span>🤖</span>
+            </div>
+            <h3>AI Workflow &amp; Assistant Prototyping</h3>
+            <p>
+              Hands-on experiments testing generative language model workflows, prompt engineering techniques for document digestion, and rapid user interface generation.
+            </p>
+            <p style="font-size: 0.84rem; color: var(--text-dim); margin-top: -6px;">
+              <strong>Takeaway:</strong> Learning where AI genuinely accelerates development and where human algorithmic rigor remains essential.
+            </p>
+            <div class="tag-cluster">
+              <span class="tag-chip accent">Generative AI</span>
+              <span class="tag-chip">Prompt Engineering</span>
+              <span class="tag-chip">Rapid Prototyping</span>
+            </div>
+          </div>
+
+          <!-- Model UN Policy Papers -->
+          <div class="matrix-card card-purple">
+            <div class="card-banner">
+              <span>policy_briefs</span>
+              <span>🌐</span>
+            </div>
+            <h3>Multilateral Technology Policy Briefs</h3>
+            <p>
+              Position papers prepared for Model United Nations simulations addressing emerging technology regulation, digital privacy rights, and international intellectual property standards.
+            </p>
+            <p style="font-size: 0.84rem; color: var(--text-dim); margin-top: -6px;">
+              <strong>Skills:</strong> Synthesizing complex legal and policy briefs, defending arguments under debate, and negotiating consensus.
+            </p>
+            <div class="tag-cluster">
+              <span class="tag-chip accent">Tech Policy</span>
+              <span class="tag-chip">Diplomatic Drafts</span>
+              <span class="tag-chip">Debate Strategy</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Connective Bridge 05 -> 06 -->
+      <div class="connective-bridge reveal-node">
+        <div class="bridge-line"></div>
+        <div class="bridge-pod" title="Motion & Expression">
+          <svg class="bridge-illust-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="36" cy="36" r="28" fill="#f4effe" stroke="#121520" stroke-width="2" />
+            <path class="anim-wave" d="M12 40 Q 24 28, 36 40 T 60 40" stroke="#8b5cf6" stroke-width="2.5" stroke-linecap="round" fill="none" />
+            <path class="anim-wave" d="M12 48 Q 24 38, 36 48 T 60 48" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" fill="none" opacity="0.6" />
+            <g class="anim-float-note">
+              <ellipse cx="6" cy="12" rx="3.5" ry="2.5" transform="rotate(-20 6 12)" fill="#ff473a" stroke="#121520" stroke-width="1.2" />
+              <line x1="8.5" y1="11" x2="8.5" y2="2" stroke="#121520" stroke-width="1.5" stroke-linecap="round" />
+              <path d="M8.5 2 Q 13 4, 13 8" stroke="#121520" stroke-width="1.5" fill="none" stroke-linecap="round" />
+            </g>
+            <circle class="anim-sparkle" cx="48" cy="22" r="3" fill="#d8f831" stroke="#121520" stroke-width="1" />
+          </svg>
+        </div>
+        <div class="bridge-badge">
+          <span class="badge-icon">↓</span>
+          <span>WAYPOINT 05 ⟷ 06 : OFF-SCREEN LIFE</span>
+        </div>
+        <div class="bridge-caption">Balancing technical focus with physical momentum and creative expression</div>
+      </div>
+
+      <!-- ============================= 06: OFF-SCREEN LIFE ZINE ============================= -->
+      <section class="reveal-node" id="section-zine">
+        <div class="section-head">
+          <div>
+            <span class="page-eyebrow purple">OFF-SCREEN ZINE · 06</span>
+            <h2 class="section-title">Life outside the <em>laptop.</em></h2>
+          </div>
+          <p class="section-desc">
+            Athletics, aesthetics, visual art, and creative curiosities beyond the command line.
+          </p>
+        </div>
+
+        <div class="zine-grid">
+          <div class="zine-card">
+            <span class="zine-emoji">🏊‍♀️</span>
+            <div class="zine-title">Swimming &amp; Skating</div>
+            <div class="zine-desc">High endurance training and physical momentum to clear my head completely.</div>
+          </div>
+
+          <div class="zine-card">
+            <span class="zine-emoji">🎨</span>
+            <div class="zine-title">Sketching</div>
+            <div class="zine-desc">Digital &amp; pencil illustration to brainstorm spatial ideas and visual aesthetics freely.</div>
+          </div>
+
+          <div class="zine-card">
+            <span class="zine-emoji">💃</span>
+            <div class="zine-title">Dance (Kathak &amp; Modern)</div>
+            <div class="zine-desc">Classical Kathak discipline paired with contemporary freedom: musicality and expression.</div>
+          </div>
+
+          <div class="zine-card">
+            <span class="zine-emoji">🎬</span>
+            <div class="zine-title">Cinema &amp; Series</div>
+            <div class="zine-desc">Fascinated by sharp directing, screenplay pacing, and intentional visual storytelling.</div>
+          </div>
+
+          <div class="zine-card">
+            <span class="zine-emoji">🌍</span>
+            <div class="zine-title">Global Travel</div>
+            <div class="zine-desc">Stepping into new cultures to learn how diverse communities approach life and problems.</div>
+          </div>
+
+          <div class="zine-card">
+            <span class="zine-emoji">✨</span>
+            <div class="zine-title">Trying New Things</div>
+            <div class="zine-desc">Never afraid to be a beginner if it means picking up an intriguing new skill.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Connective Bridge 06 -> 07 -->
+      <div class="connective-bridge reveal-node">
+        <div class="bridge-line"></div>
+        <div class="bridge-pod" title="Broadcast & Collaborate">
+          <svg class="bridge-illust-svg" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="36" cy="36" r="28" fill="#ffffff" stroke="#121520" stroke-width="2" />
+            <path class="anim-signal-1" d="M18 48 A 22 22 0 0 1 48 18" stroke="#ff473a" stroke-width="1.5" stroke-dasharray="3 3" fill="none" />
+            <path class="anim-signal-2" d="M22 52 A 26 26 0 0 1 54 20" stroke="#2563eb" stroke-width="1.5" stroke-linecap="round" fill="none" />
+            <g class="anim-plane">
+              <polygon points="26,4 4,16 12,20 26,4" fill="#ff473a" stroke="#121520" stroke-width="1.5" stroke-linejoin="round" />
+              <polygon points="26,4 12,20 18,24 26,4" fill="#ffffff" stroke="#121520" stroke-width="1.5" stroke-linejoin="round" />
+              <polygon points="12,20 14,26 18,24 12,20" fill="#121520" stroke="#121520" stroke-width="1" />
+            </g>
+          </svg>
+        </div>
+        <div class="bridge-badge">
+          <span class="badge-icon">↓</span>
+          <span>WAYPOINT 06 ⟷ 07 : SAY HEY</span>
+        </div>
+        <div class="bridge-caption">Let's talk about code, products, ideas, or campus collaborations</div>
+      </div>
+
+      <!-- ============================= 07: SAY HEY & CONNECT ============================= -->
+      <section class="reveal-node" id="section-contact">
+        <div class="section-head">
+          <div>
+            <span class="page-eyebrow coral">GET IN TOUCH · 07</span>
+            <h2 class="section-title">Let's make something <em>meaningful.</em></h2>
+          </div>
+          <p class="section-desc">
+            Based in Sonipat / Delhi NCR. Always open to discussing code, product teardowns, or collaborations.
+          </p>
+        </div>
+
+        <div class="contact-layout">
+          <!-- Direct Channels -->
+          <div class="matrix-card card-coral">
+            <div class="card-banner">
+              <span>contact_channels</span>
+              <span>📬</span>
+            </div>
+            <h3>Direct Channels</h3>
+            <p>Always happy to connect with fellow builders, founders, and curious minds.</p>
+
+            <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px;">
+              <div>
+                <div style="font-size: 0.74rem; font-family: var(--font-mono); text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Email</div>
+                <div style="font-size: 1.05rem; font-weight: 800; color: var(--coral); margin-top: 2px;">
+                  <a href="mailto:miraya.chauhan@example.com">miraya.chauhan@example.com</a>
+                </div>
+              </div>
+
+              <div>
+                <div style="font-size: 0.74rem; font-family: var(--font-mono); text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Institution</div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-top: 2px;">
+                  Rishihood University × Newton School of Tech
+                </div>
+              </div>
+
+              <div>
+                <div style="font-size: 0.74rem; font-family: var(--font-mono); text-transform: uppercase; color: var(--text-dim); font-weight: 700;">Degree &amp; Year</div>
+                <div style="font-size: 0.95rem; font-weight: 700; color: var(--text); margin-top: 2px;">
+                  B.Tech in CS &amp; Artificial Intelligence (First Year)
+                </div>
+              </div>
+
+              <div style="display: flex; gap: 10px; margin-top: 6px;">
+                <a href="https://linkedin.com" target="_blank" rel="noreferrer" class="action-btn coral" style="padding: 8px 18px; font-size: 0.84rem;">LinkedIn ↗</a>
+                <a href="https://github.com" target="_blank" rel="noreferrer" class="action-btn outline" style="padding: 8px 18px; font-size: 0.84rem;">GitHub ↗</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Form -->
+          <div class="matrix-card card-blue">
+            <div class="card-banner">
+              <span>send_a_message</span>
+              <span>✍️</span>
+            </div>
+            <h3>Send a quick note</h3>
+            <p>Leave a note with your email and I will get back to you promptly.</p>
+
+            <form class="contact-form">
+              <div class="form-group">
+                <label for="c-name">Your Name</label>
+                <input type="text" id="c-name" class="form-input" placeholder="e.g. Alex" required />
+              </div>
+              <div class="form-group">
+                <label for="c-email">Email Address</label>
+                <input type="email" id="c-email" class="form-input" placeholder="alex@company.com" required />
+              </div>
+              <div class="form-group">
+                <label for="c-message">Message</label>
+                <textarea id="c-message" rows="3" class="form-textarea" placeholder="Hi Miraya, wanted to talk about..." required></textarea>
+              </div>
+              <button type="submit" class="action-btn coral" style="width: 100%; justify-content: center; margin-top: 6px;">
+                Send Message 🚀
+              </button>
+              <div class="form-status" style="display: none; color: var(--mint); font-size: 0.88rem; text-align: center; margin-top: 8px; font-weight: 800;">
+                ✨ Message received! I will reply soon.
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
 
     </div>
   </main>
+
   <!-- Site Footer -->
   <footer class="site-footer">
     <div class="shell footer-row">
       <div>
-        <strong style="color: var(--text);">Miraya Chauhan</strong> — CS &amp; AI student at Rishihood University × Newton School of Tech.
-      </div>
-      <div class="footer-nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="toolkit.html">Toolkit</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
+        <strong style="color: var(--text);">Miraya Chauhan</strong> — CS &amp; AI student at Rishihood × Newton School of Tech.
       </div>
       <div>
-        Built with curiosity, speed &amp; real code · 2026
+        Built with curiosity, speed, and real code · 2026
       </div>
     </div>
   </footer>
-  <script src="nav.js"></script>
-  <script src="canvas.js"></script>
+
+  <!-- ============================= INLINED JAVASCRIPT ============================= -->
+  <script>
+(() => {
+  'use strict';
+  const canvas = document.getElementById('hero-canvas');
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      let w = 0, h = 0, dpr = 1;
+      let animId = null;
+      let currentMode = 'skate'; // 'skate', 'code', 'sparks'
+
+      const mouse = {
+        x: 150,
+        y: 140,
+        isDown: false,
+        speed: 1,
+        lastX: 150,
+        lastY: 140
+      };
+
+      // Vibrant Poppy Palette for Light Canvas
+      const CHROMATIC = [
+        { r: 255, g: 71,  b: 58  }, // Coral #ff473a
+        { r: 37,  g: 99,  b: 235 }, // Blue #2563eb
+        { r: 216, g: 248, b: 49  }, // Lime #d8f831
+        { r: 255, g: 196, b: 37  }, // Yellow #ffc425
+        { r: 139, g: 92,  b: 246 }  // Purple #8b5cf6
+      ];
+
+      // Particle sparks pool for interactive bursts
+      const sparks = [];
+      const MAX_SPARKS = 70;
+      for (let i = 0; i < MAX_SPARKS; i++) {
+        sparks.push({
+          x: 0, y: 0, vx: 0, vy: 0,
+          size: 0, color: CHROMATIC[0],
+          life: 0, maxLife: 1, active: false
+        });
+      }
+
+      function spawnSpark(x, y, count = 8, spread = 4) {
+        let spawned = 0;
+        for (let i = 0; i < MAX_SPARKS && spawned < count; i++) {
+          const s = sparks[i];
+          if (!s.active) {
+            s.x = x;
+            s.y = y;
+            const a = Math.random() * Math.PI * 2;
+            const spd = 1.5 + Math.random() * spread;
+            s.vx = Math.cos(a) * spd;
+            s.vy = Math.sin(a) * spd;
+            s.size = 3 + Math.random() * 4;
+            s.color = CHROMATIC[(Math.random() * CHROMATIC.length) | 0];
+            s.life = 0;
+            s.maxLife = 25 + Math.random() * 20;
+            s.active = true;
+            spawned++;
+          }
+        }
+      }
+
+      function resize() {
+        const rect = canvas.getBoundingClientRect();
+        w = rect.width;
+        h = rect.height;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(w * dpr);
+        canvas.height = Math.floor(h * dpr);
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      function updatePointer(e) {
+        const r = canvas.getBoundingClientRect();
+        const nx = e.clientX - r.left;
+        const ny = e.clientY - r.top;
+        const dx = nx - mouse.lastX;
+        const dy = ny - mouse.lastY;
+        mouse.speed = Math.min(Math.sqrt(dx * dx + dy * dy), 16);
+        mouse.x = nx;
+        mouse.y = ny;
+        mouse.lastX = nx;
+        mouse.lastY = ny;
+      }
+
+      canvas.addEventListener('pointermove', (e) => {
+        updatePointer(e);
+        if (Math.random() < 0.6) {
+          spawnSpark(mouse.x, mouse.y, 2, 2.5);
+        }
+      });
+      canvas.addEventListener('pointerdown', (e) => {
+        mouse.isDown = true;
+        updatePointer(e);
+        spawnSpark(mouse.x, mouse.y, 20, 6);
+      });
+      window.addEventListener('pointerup', () => { mouse.isDown = false; });
+
+      // Mode switch buttons
+      document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentMode = btn.getAttribute('data-mode');
+          spawnSpark(w * 0.5, h * 0.5, 25, 7);
+        });
+      });
+
+      let t = 0;
+      let wheelAngle = 0;
+
+      function draw() {
+        t += 0.03;
+        ctx.clearRect(0, 0, w, h);
+
+        const cx = w * 0.5;
+        const cy = h * 0.5;
+
+        // Subtle editorial light grid
+        ctx.strokeStyle = 'rgba(18, 22, 34, 0.05)';
+        ctx.lineWidth = 1;
+        const step = 28;
+        for (let x = (t * 8) % step; x < w; x += step) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+        }
+        for (let y = 0; y < h; y += step) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+        }
+
+        /* ── Mode 1: Interactive Speed Skate Illustration ── */
+        if (currentMode === 'skate') {
+          const bob = Math.sin(t * 3) * 6;
+          const tilt = Math.sin(t * 2) * 0.08 + (mouse.x - cx) * 0.0006;
+
+          ctx.save();
+          ctx.translate(cx, cy + bob);
+          ctx.rotate(tilt);
+
+          // Graphic speed motion lines
+          for (let i = 0; i < 4; i++) {
+            const streakY = -25 + i * 16;
+            const streakLen = 45 + Math.sin(t * 8 + i) * 20 + mouse.speed * 4;
+            ctx.strokeStyle = i % 2 === 0 ? '#ff473a' : '#2563eb';
+            ctx.lineWidth = 2.5;
+            ctx.beginPath();
+            ctx.moveTo(-110, streakY);
+            ctx.lineTo(-110 - streakLen, streakY);
+            ctx.stroke();
+          }
+
+          // Skate Boot Body (Bold Graphic Silhouette)
+          ctx.fillStyle = '#ff473a';
+          ctx.strokeStyle = '#121520';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.moveTo(-75, 10);
+          ctx.lineTo(-65, -35);
+          ctx.quadraticCurveTo(-45, -55, 10, -35);
+          ctx.lineTo(60, -10);
+          ctx.quadraticCurveTo(85, -2, 75, 15);
+          ctx.lineTo(-75, 15);
+          ctx.closePath();
+          ctx.fill();
+          ctx.stroke();
+
+          // Boot Graphic Laces & Collar
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.moveTo(-60, -30);
+          ctx.lineTo(20, -22);
+          ctx.stroke();
+
+          // Gold Blade Chassis Frame
+          ctx.fillStyle = '#ffc425';
+          ctx.strokeStyle = '#121520';
+          ctx.lineWidth = 2.5;
+          ctx.fillRect(-80, 16, 160, 7);
+          ctx.strokeRect(-80, 16, 160, 7);
+
+          // 4 Inline Speed Wheels with Interactive Rotation
+          wheelAngle += 0.06 + mouse.speed * 0.04;
+          const wheelRadius = 14;
+          const wheelXs = [-60, -20, 20, 60];
+
+          wheelXs.forEach((wx, idx) => {
+            ctx.save();
+            ctx.translate(wx, 35);
+            ctx.rotate(wheelAngle);
+
+            ctx.beginPath();
+            ctx.arc(0, 0, wheelRadius, 0, Math.PI * 2);
+            ctx.fillStyle = idx % 2 === 0 ? '#d8f831' : '#2563eb';
+            ctx.fill();
+            ctx.strokeStyle = '#121520';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+
+            // Inner spoke
+            ctx.beginPath();
+            ctx.moveTo(-wheelRadius + 2, 0); ctx.lineTo(wheelRadius - 2, 0);
+            ctx.moveTo(0, -wheelRadius + 2); ctx.lineTo(0, wheelRadius - 2);
+            ctx.strokeStyle = '#121520';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+
+            ctx.restore();
+          });
+
+          // Text Graphic Pill inside boot
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 11px Syne, sans-serif';
+          ctx.fillText('2X STATE CHAMP', -50, -6);
+
+          ctx.restore();
+
+        /* ── Mode 2: Interactive Code Terminal Window ── */
+        } else if (currentMode === 'code') {
+          ctx.save();
+          ctx.translate(cx, cy);
+
+          // Outer macOS Terminal Window Frame
+          ctx.fillStyle = '#ffffff';
+          ctx.strokeStyle = '#121520';
+          ctx.lineWidth = 3;
+          ctx.beginPath();
+          ctx.roundRect(-80, -55, 160, 110, 12);
+          ctx.fill();
+          ctx.stroke();
+
+          // Title bar header
+          ctx.fillStyle = '#f8f6f0';
+          ctx.beginPath();
+          ctx.roundRect(-80, -55, 160, 24, [12, 12, 0, 0]);
+          ctx.fill();
+          ctx.stroke();
+
+          // macOS traffic lights
+          const dots = ['#ff473a', '#ffc425', '#10b981'];
+          dots.forEach((c, i) => {
+            ctx.beginPath();
+            ctx.arc(-64 + i * 14, -43, 4, 0, Math.PI * 2);
+            ctx.fillStyle = c;
+            ctx.fill();
+            ctx.stroke();
+          });
+
+          // Big Glowing Code Glyphs </ >
+          ctx.font = 'bold 36px Syne, monospace';
+          ctx.fillStyle = '#2563eb';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText('</>', 0, 12);
+
+          // Orbiting data nodes
+          for (let i = 0; i < 4; i++) {
+            const angle = t * 1.5 + (i * Math.PI) / 2;
+            const dist = 78;
+            const px = Math.cos(angle) * dist;
+            const py = Math.sin(angle) * dist;
+
+            ctx.beginPath();
+            ctx.arc(px, py, 6, 0, Math.PI * 2);
+            ctx.fillStyle = `rgb(${CHROMATIC[i].r}, ${CHROMATIC[i].g}, ${CHROMATIC[i].b})`;
+            ctx.fill();
+            ctx.strokeStyle = '#121520';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Link to terminal
+            ctx.beginPath();
+            ctx.moveTo(px, py);
+            ctx.lineTo(px * 0.5, py * 0.5);
+            ctx.strokeStyle = 'rgba(18, 22, 34, 0.2)';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
+          }
+
+          ctx.restore();
+
+        /* ── Mode 3: Rainbow Star Bursting ── */
+        } else {
+          ctx.save();
+          ctx.translate(cx, cy);
+
+          for (let layer = 0; layer < 3; layer++) {
+            const scale = 1 - layer * 0.25;
+            const rot = (layer % 2 === 0 ? 1 : -1) * t * 0.8;
+            ctx.save();
+            ctx.rotate(rot);
+            ctx.scale(scale, scale);
+
+            ctx.beginPath();
+            const points = 8;
+            const outerR = 65;
+            const innerR = 24;
+            for (let i = 0; i < points * 2; i++) {
+              const r = i % 2 === 0 ? outerR : innerR;
+              const a = (i * Math.PI) / points;
+              const px = Math.cos(a) * r;
+              const py = Math.sin(a) * r;
+              if (i === 0) ctx.moveTo(px, py);
+              else ctx.lineTo(px, py);
+            }
+            ctx.closePath();
+            ctx.fillStyle = layer === 0 ? '#ff473a' : (layer === 1 ? '#d8f831' : '#2563eb');
+            ctx.strokeStyle = '#121520';
+            ctx.lineWidth = 2.5;
+            ctx.fill();
+            ctx.stroke();
+            ctx.restore();
+          }
+
+          ctx.restore();
+        }
+
+        // Draw and update active sparks
+        for (let i = 0; i < MAX_SPARKS; i++) {
+          const s = sparks[i];
+          if (s.active) {
+            s.x += s.vx;
+            s.y += s.vy;
+            s.vx *= 0.94;
+            s.vy *= 0.94;
+            s.life++;
+            const alpha = Math.max(0, 1 - (s.life / s.maxLife));
+            if (s.life >= s.maxLife) {
+              s.active = false;
+            } else {
+              const c = s.color;
+              ctx.beginPath();
+              ctx.arc(s.x, s.y, s.size * alpha, 0, Math.PI * 2);
+              ctx.fillStyle = `rgb(${c.r}, ${c.g}, ${c.b})`;
+              ctx.fill();
+              ctx.strokeStyle = '#121520';
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+          }
+        }
+
+        animId = requestAnimationFrame(draw);
+      }
+
+      animId = requestAnimationFrame(draw);
+    }
+})();
+
+(() => {
+  'use strict';
+
+  // 1. Scroll Progress Bar
+  const progressBar = document.getElementById('scroll-progress-bar');
+  if (progressBar) {
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+      progressBar.style.width = scrolled + '%';
+    }, { passive: true });
+  }
+
+  // 2. Scroll Reveal Animations
+  const revealElements = document.querySelectorAll('.reveal-node');
+  if (revealElements.length > 0) {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -40px 0px'
+      });
+      revealElements.forEach(el => observer.observe(el));
+    } else {
+      revealElements.forEach(el => el.classList.add('revealed'));
+    }
+  }
+
+  // 3. Mobile Navigation Drawer Toggle
+  const mobileToggle = document.querySelector('.mobile-toggle');
+  const navTabs = document.querySelector('.nav-tabs');
+  if (mobileToggle && navTabs) {
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = navTabs.classList.toggle('mobile-open');
+      if (isOpen) {
+        navTabs.style.display = 'flex';
+        navTabs.style.position = 'absolute';
+        navTabs.style.top = '68px';
+        navTabs.style.left = '0';
+        navTabs.style.width = '100%';
+        navTabs.style.flexDirection = 'column';
+        navTabs.style.background = '#ffffff';
+        navTabs.style.padding = '18px';
+        navTabs.style.borderRadius = '0 0 16px 16px';
+        navTabs.style.boxShadow = '0 12px 28px rgba(18, 22, 34, 0.12)';
+      } else {
+        navTabs.style.display = '';
+        navTabs.style.position = '';
+      }
+    });
+  }
+
+  // 4. Contact Form Handler
+  const contactForm = document.querySelector('.contact-form');
+  const formStatus = document.querySelector('.form-status');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+      }
+      setTimeout(() => {
+        contactForm.reset();
+        if (submitBtn) {
+          submitBtn.textContent = 'Sent! 🚀';
+          submitBtn.disabled = false;
+        }
+        if (formStatus) formStatus.style.display = 'block';
+      }, 500);
+    });
+  }
+
+})();
+
+
+  // Active Section Tracking for Header & Waypoint Tracker
+  (() => {
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    const navLinks = Array.from(document.querySelectorAll('.nav-pill-btn'));
+    const waypointNodes = Array.from(document.querySelectorAll('.waypoint-node'));
+
+    if ('IntersectionObserver' in window && sections.length > 0) {
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+
+            // Update Header Nav Pills
+            navLinks.forEach(link => {
+              const href = link.getAttribute('href');
+              link.classList.toggle('active', href === '#' + id);
+            });
+
+            // Update Waypoint Nodes
+            waypointNodes.forEach(node => {
+              const target = node.getAttribute('data-target');
+              node.classList.toggle('active', target === id);
+            });
+          }
+        });
+      }, {
+        threshold: 0.3
+      });
+
+      sections.forEach(sec => sectionObserver.observe(sec));
+    }
+  })();
+  </script>
 </body>
 </html>
